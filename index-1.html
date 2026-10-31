@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mes courses</title>
+<style>
+:root{--bg:#F1F5EE;--card:#fff;--ink:#12302A;--mut:#5F7A70;--line:#D9E3D6;--ac:#1F7A4D;--acx:#fff;--hot:#D9482B;--chip:#E3EEDF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1916;--card:#16251F;--ink:#E4F0E8;--mut:#8FAA9E;--line:#264037;--ac:#4FC088;--acx:#0E1916;--hot:#FF7A5C;--chip:#1F3830;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1916;--card:#16251F;--ink:#E4F0E8;--mut:#8FAA9E;--line:#264037;--ac:#4FC088;--acx:#0E1916;--hot:#FF7A5C;--chip:#1F3830;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,'Segoe UI',Roboto,sans-serif;padding-bottom:90px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:20}
+button,input,select,textarea{font:inherit;color:inherit}
+button{border:0;background:none;cursor:pointer}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:10;padding:12px 14px 10px;border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+h1{font-size:24px;font-weight:800;margin:0;letter-spacing:-.5px}
+.tb{display:flex;gap:6px}
+.pill{height:40px;padding:0 11px;border-radius:20px;background:var(--chip);font-weight:600;font-size:13px}
+.add{display:grid;grid-template-columns:1fr 48px;gap:8px;position:relative}.add .r2{grid-column:1/-1;display:flex;gap:8px}.add #q{flex:0 0 40%}.rw{user-select:none;-webkit-user-select:none}.rw .n{min-width:28px;height:28px;border-radius:14px;background:var(--ac);color:var(--acx);display:grid;place-items:center;font-size:13px;font-weight:800}.hd{width:52px;height:48px;display:grid;place-items:center;font-size:24px;color:var(--mut);touch-action:none;cursor:grab;flex:none}.rw.drg{background:var(--ac);color:var(--acx);border-radius:16px;transform:scale(1.05);box-shadow:0 10px 26px rgba(0,0,0,.35);font-size:19px;font-weight:800;padding:8px 10px;position:relative;z-index:2;border-bottom-color:transparent}.rw.drg .n{background:var(--acx);color:var(--ac)}.rw.drg .hd{color:var(--acx)}.nrw{display:flex;gap:8px;margin-top:16px}.nrw input{flex:1;min-width:0;height:46px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);padding:0 12px}.cv{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);min-height:56px}.cnm{flex:1;font-size:17px}.cb{width:44px;height:44px;border-radius:22px;background:var(--chip);font-size:22px;font-weight:800;flex:none}.cb.pl{background:var(--ac);color:var(--acx)}.cq{min-width:28px;text-align:center;font-size:18px}#ak,#ec,#eq{width:100%;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);padding:0 14px;margin-bottom:6px}
+.add input{flex:1;min-width:0;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);padding:0 14px}
+.add input:focus,.add select:focus{outline:2px solid var(--ac);outline-offset:1px}
+.add select{height:48px;flex:1;min-width:0;border-radius:14px;border:1.5px solid var(--line);background:var(--card);padding:0 8px;font-size:14px}
+.go{width:48px;height:48px;border-radius:14px;background:var(--ac);color:var(--acx);font-size:26px;font-weight:600}
+#sg{position:absolute;left:0;right:0;top:54px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.18);overflow:hidden;display:none}
+#sg button{display:flex;justify-content:space-between;width:100%;padding:12px 14px;text-align:left;min-height:46px;border-bottom:1px solid var(--line)}
+#sg button:last-child{border:0}#sg small{color:var(--mut);font-size:12px;align-self:center}
+main{padding:6px 14px}
+section{margin:18px 0}
+h2{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:800;margin:0 0 6px}
+h2 .ord{min-width:26px;height:26px;border-radius:13px;background:var(--ac);color:var(--acx);display:grid;place-items:center;font-size:13px}
+h2 small{margin-left:auto;color:var(--mut);font-weight:600}
+.it{display:flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:6px;min-height:52px}
+.chk{width:52px;height:52px;display:grid;place-items:center;flex:none}
+.chk i{width:26px;height:26px;border-radius:8px;border:2px solid var(--mut);display:grid;place-items:center;color:transparent;font-style:normal;font-weight:800}
+.it.d .chk i{background:var(--ac);border-color:var(--ac);color:var(--acx)}
+.nm{flex:1;min-width:0;padding:8px 0;text-align:left;font-size:17px}
+.nm em{display:block;font-style:normal;font-size:13px;color:var(--mut)}
+.it.d .nm{text-decoration:line-through;color:var(--mut)}
+.ic{width:44px;height:48px;flex:none;color:var(--mut);font-size:18px}
+.ic.mv{color:var(--hot)}
+.nx h2{color:var(--hot)}.nx .it{border-style:dashed}
+.empty{text-align:center;color:var(--mut);padding:50px 20px}
+.bar{position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line);z-index:10}
+.bar button{width:100%;height:52px;border-radius:16px;background:var(--ink);color:var(--bg);font-weight:800}
+.bar button.cf{background:var(--hot);color:#fff}
+.sheet{position:fixed;inset:0;display:none;background:rgba(0,0,0,.45);z-index:30}
+.sheet.on{display:flex;align-items:flex-end}
+.sheet>div{background:var(--bg);width:100%;max-height:88%;overflow:auto;border-radius:22px 22px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px))}
+.sheet h3{margin:0 0 4px;font-size:20px}.sheet p{margin:0 0 14px;color:var(--mut);font-size:14px}
+.rw{display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)}
+.rw span{flex:1}.rw input{width:64px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);text-align:center;font-weight:800}
+textarea{width:100%;height:130px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);padding:12px;resize:vertical}
+.fl{display:block;margin:10px 0;padding:12px;border-radius:14px;border:1.5px dashed var(--mut);text-align:center;color:var(--mut)}
+.fl input{display:none}
+.big{width:100%;height:50px;border-radius:14px;background:var(--ac);color:var(--acx);font-weight:800;margin-top:6px}
+.ing{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.ing input{width:22px;height:22px;accent-color:var(--ac)}
+.ing small{color:var(--mut);display:block}
+#st{color:var(--mut);margin:8px 0;min-height:20px}
+.x{float:right;font-size:22px;color:var(--mut);width:40px;height:40px}
+#toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:20px;z-index:40;display:none;font-size:14px;max-width:90%}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><h1>Courses</h1><div class="tb"><button class="pill" id="bCv">Conserves</button><button class="pill" id="bRec">Recette</button><button class="pill" id="bRay">Rayons</button></div></div>
+ <div class="add">
+  <input id="in" placeholder="Ajouter un produit…" autocomplete="off" autocapitalize="none" enterkeyhint="done">
+  
+  <button class="go" id="bAdd" aria-label="Ajouter">+</button><div class="r2"><input id="q" placeholder="Quantité (500 g, 3…)" autocomplete="off" enterkeyhint="done"><select id="cat" aria-label="Rayon"></select></div>
+  <div id="sg"></div>
+ </div>
+</header>
+<main id="list"></main>
+<div class="bar"><button id="bEnd">Terminer les courses</button></div>
+
+<div class="sheet" id="shR"><div>
+ <button class="x" data-close aria-label="Fermer">×</button>
+ <h3>Ordre dans le magasin</h3><p>Maintiens ☰ et glisse un rayon pour le monter ou le descendre. Le numéro 1 est le premier rayon que tu croises.</p>
+ <div id="rays"></div>
+ <div class="nrw"><input id="nr" placeholder="Nouveau rayon (ex. Bio, Animaux…)" autocomplete="off" enterkeyhint="done"><button class="pill" id="bNr">Créer</button></div>
+</div></div>
+
+<div class="sheet" id="shC"><div>
+ <button class="x" data-close aria-label="Fermer">×</button>
+ <h3>Ajouter une recette</h3><p>Colle le texte des ingrédients ou ajoute une capture d’écran.</p>
+ <textarea id="rt" placeholder="200 g de farine&#10;3 œufs&#10;1 citron…"></textarea>
+ <label class="fl" id="fl"><input type="file" id="rf" accept="image/*"><span id="fn">Choisir une capture ou une photo</span></label>
+ <button class="big" id="bAn">Trouver les ingrédients</button>
+ <input id="ak" type="password" placeholder="Clé API Anthropic (pour lire les captures)" autocomplete="off" style="margin-top:10px">
+ <div id="st"></div>
+ <div id="res"></div>
+ <button class="big" id="bOk" style="display:none">Ajouter à ma liste</button>
+</div></div>
+<div class="sheet" id="shV"><div>
+ <button class="x" data-close aria-label="Fermer">×</button>
+ <h3>Conserves</h3><p>Appuie sur + pour ajouter à ta liste. Appuie encore pour augmenter la quantité.</p>
+ <div id="cl"></div>
+ <div class="nrw"><input id="cn" placeholder="Nouvelle conserve récurrente…" autocomplete="off" enterkeyhint="done"><button class="pill" id="bCa">Ajouter</button></div>
+ <button class="pill" id="bCe" style="margin-top:12px;width:100%"></button>
+</div></div>
+<div class="sheet" id="shE"><div>
+ <button class="x" data-close aria-label="Fermer">×</button>
+ <h3 id="eh"></h3><p>Quantité, grammage et rayon. Le rayon choisi sera retenu pour ce produit.</p>
+ <input id="eq" placeholder="500 g, 3, 1 boîte…" autocomplete="off" enterkeyhint="done">
+ <select id="ec" aria-label="Rayon"></select>
+ <button class="big" id="bEd">Enregistrer</button>
+</div></div>
+<div id="toast"></div>
+
+<script>
+const D=`Fruits & légumes|pomme,poire,banane,orange,citron,clémentine,fraise,raisin,kiwi,ananas,mangue,avocat,pêche,melon,pastèque,tomate,concombre,carotte,courgette,aubergine,poivron,oignon,ail,échalote,pomme de terre,patate douce,salade,laitue,épinards,brocoli,chou-fleur,chou,poireau,champignons,haricots verts,radis,betterave,céleri,fenouil,persil,coriandre,basilic,menthe,gingembre
+Boulangerie|pain,baguette,pain de mie,brioche,croissant,tortillas,pain burger
+Crèmerie & œufs|lait,beurre,œufs,crème fraîche,crème liquide,yaourt,fromage,gruyère râpé,emmental,mozzarella,parmesan,camembert,fromage blanc,chèvre
+Viandes & poissons|poulet,blanc de poulet,steak haché,bœuf,porc,côtelettes,saucisses,merguez,jambon,lardons,dinde,agneau,saumon,cabillaud,thon,crevettes,rôti
+Épicerie|pâtes,riz,farine,sucre,sel,poivre,huile d’olive,huile,vinaigre,sauce tomate,tomates concassées,lentilles,pois chiches,haricots rouges,semoule,céréales,biscuits,chocolat,confiture,miel,café,thé,moutarde,mayonnaise,ketchup,thon en boîte,maïs,bouillon,levure,cacao,lait de coco,cumin,paprika,curry,chapelure,nouilles,pâte feuilletée,compote
+Boissons|eau,eau gazeuse,jus d’orange,jus de pomme,cola,limonade,bière,vin,sirop,lait d’avoine
+Surgelés|glace,pizza surgelée,légumes surgelés,frites surgelées,poisson pané,petits pois surgelés
+Hygiène & maison|papier toilette,essuie-tout,liquide vaisselle,lessive,shampoing,gel douche,dentifrice,savon,éponges,sacs poubelle,adoucissant,déodorant`;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>s.toLowerCase().replace(/œ/g,'oe').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+const DICT=[],CN=[];
+D.split('\n').forEach(l=>{const[c,w]=l.split('|');CN.push(c);w.split(',').forEach(n=>DICT.push({n,c}))});
+CN.push('Autres');
+let S=null;
+try{S=JSON.parse(localStorage.getItem('courses')||'null')}catch(e){}
+if(!S||!S.cats)S={cats:CN.map((id,i)=>({id,order:i+1})),items:[],learned:{}};
+if(!S.cons)S.cons=['haricots verts','haricots rouges','haricots blancs','flageolets','pois chiches','ratatouille','lentilles'];
+S.items.forEach(i=>{if(/ \(conserve\)$/.test(i.name)){i.name=i.name.replace(/ \(conserve\)$/,'');i.cv=1}});
+const save=()=>{try{localStorage.setItem('courses',JSON.stringify(S))}catch(e){}};
+const sorted=()=>[...S.cats].sort((a,b)=>a.order-b.order);
+function catOf(name){const n=norm(name);if(S.learned[n])return S.learned[n];
+ let m=DICT.find(d=>norm(d.n)===n)||DICT.find(d=>norm(d.n).length>3&&(n.includes(norm(d.n))||norm(d.n).includes(n)&&n.length>3));
+ return m?m.c:''}
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2200)}
+function fillSel(){$('#cat').innerHTML=sorted().map(c=>`<option>${esc(c.id)}</option>`).join('')}
+function add(name,cat,qty,rec){name=name.trim();if(!name)return false;
+ const n=norm(name);
+ if(S.items.some(i=>!i.next&&!i.cv&&norm(i.name)===n)){toast('Déjà dans la liste');return false}
+ cat=cat||catOf(name)||'Autres';
+ S.items.push({id:Date.now()+Math.random(),name:name[0].toUpperCase()+name.slice(1),qty:qty||'',cat,done:false,next:false});
+ if(!rec)S.learned[n]=cat;save();render();return true}
+function render(){
+ const act=S.items.filter(i=>!i.next),nx=S.items.filter(i=>i.next);let h='';
+ const row=(i,nxt)=>`<div class="it ${i.done?'d':''}" data-id="${i.id}">
+  ${nxt?'':`<button class="chk" data-a="t" aria-label="Cocher"><i>✓</i></button>`}
+  <button class="nm" data-a="${nxt?'':'t'}" style="${nxt?'padding-left:14px':''}">${esc(i.name)}${i.qty?`<em>${esc(i.qty)}</em>`:''}</button>
+  ${nxt?`<button class="ic" data-a="b" aria-label="Remettre dans la liste" style="width:auto;padding:0 10px;font-size:13px;font-weight:600;color:var(--ac)">Remettre</button>`:`<button class="ic" data-a="e" aria-label="Modifier la quantité">✎</button><button class="ic mv" data-a="n" aria-label="Reporter à la prochaine fois">⏭</button>`}
+  <button class="ic" data-a="x" aria-label="Supprimer">✕</button></div>`;
+ sorted().forEach(c=>{const its=act.filter(i=>i.cat===c.id).sort((a,b)=>a.done-b.done);
+  if(its.length)h+=`<section><h2><span class="ord">${c.order}</span>${esc(c.id)}<small>${its.filter(i=>!i.done).length}/${its.length}</small></h2>${its.map(i=>row(i)).join('')}</section>`});
+ if(!act.length)h+=`<div class="empty">Ta liste est vide.<br>Tape un produit ci-dessus pour commencer.</div>`;
+ if(nx.length)h+=`<section class="nx"><h2>Pour la prochaine fois<small>${nx.length}</small></h2>${nx.map(i=>row(i,1)).join('')}</section>`;
+ $('#list').innerHTML=h;
+}
+$('#list').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b||!b.dataset.a)return;
+ const id=b.closest('.it').dataset.id,it=S.items.find(i=>String(i.id)===id);if(!it)return;
+ const a=b.dataset.a;
+ if(a==='t')it.done=!it.done;
+ else if(a==='n'){it.next=true;it.done=false;toast('Reporté à la prochaine fois')}
+ else if(a==='b')it.next=false;
+ else if(a==='e'){editIt(it);return}
+ else if(a==='x')S.items=S.items.filter(i=>i!==it);
+ save();render()});
+/* autocomplétion */
+const inp=$('#in'),sg=$('#sg');let catManual=0;$('#cat').addEventListener('change',()=>catManual=1);
+function suggest(){const q=norm(inp.value);if(!q){sg.style.display='none';catManual=0;return}
+ const pool=[...DICT];Object.keys(S.learned).forEach(k=>{if(!pool.some(d=>norm(d.n)===k))pool.push({n:k,c:S.learned[k]})});
+ const st=[],ct=[];pool.forEach(d=>{const n=norm(d.n);if(n.startsWith(q))st.push(d);else if(n.split(/[\s-]+/).some(w=>w.startsWith(q))||(q.length>2&&n.includes(q)))ct.push(d)});
+ const r=[...st,...ct].slice(0,6);
+ const m=catOf(inp.value);if(!catManual)$('#cat').value=m||'Autres';
+ sg.innerHTML=r.map(d=>`<button data-n="${esc(d.n)}" data-c="${esc(d.c)}">${esc(d.n)}<small>${esc(d.c)}</small></button>`).join('');
+ sg.style.display=r.length?'block':'none'}
+inp.addEventListener('input',suggest);
+sg.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ if(add(b.dataset.n,b.dataset.c,$('#q').value.trim())){catManual=0;inp.value='';$('#q').value='';sg.style.display='none'}inp.focus()});
+function submit(){if(add(inp.value,$('#cat').value,$('#q').value.trim())){catManual=0;inp.value='';$('#q').value='';sg.style.display='none'}inp.focus()}
+$('#bAdd').onclick=submit;$('#q').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();submit()}});
+inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();submit()}});
+document.addEventListener('click',e=>{if(!e.target.closest('.add'))sg.style.display='none'});
+/* terminer */
+let cf=0;
+$('#bEnd').onclick=function(){
+ if(!cf){this.textContent='Confirmer : vider les cochés, reprendre les reportés';this.classList.add('cf');cf=setTimeout(rs,3500);return}
+ const d=S.items.filter(i=>!i.next&&i.done).length;
+ S.items=S.items.filter(i=>!(i.done&&!i.next));S.items.forEach(i=>{if(i.next)i.next=false});
+ save();render();rs();toast(d+' produit(s) retiré(s), reportés remis en liste')};
+function rs(){clearTimeout(cf);cf=0;const b=$('#bEnd');b.textContent='Terminer les courses';b.classList.remove('cf')}
+/* feuilles */
+const open=id=>$(id).classList.add('on');
+document.querySelectorAll('.sheet').forEach(s=>s.addEventListener('click',e=>{if(e.target===s||e.target.dataset.close!==undefined)s.classList.remove('on')}));
+function rays(){$('#rays').innerHTML=sorted().map((c,i)=>`<div class="rw" data-c="${esc(c.id)}"><b class="n">${i+1}</b><span>${esc(c.id)}</span><div class="hd" aria-label="Déplacer ${esc(c.id)}">☰</div></div>`).join('')}
+$('#bRay').onclick=()=>{rays();open('#shR')};
+let drag=null;
+$('#rays').addEventListener('pointerdown',e=>{const h=e.target.closest('.hd');if(!h)return;e.preventDefault();drag=h.parentElement;drag.classList.add('drg')});
+document.addEventListener('pointermove',e=>{if(!drag)return;const box=$('#rays');
+ const nxt=[...box.children].filter(r=>r!==drag).find(r=>{const b=r.getBoundingClientRect();return e.clientY<b.top+b.height/2})||null;
+ if(drag.nextElementSibling!==nxt)box.insertBefore(drag,nxt);
+ [...box.children].forEach((r,i)=>r.querySelector('.n').textContent=i+1)});
+function endDrag(){if(!drag)return;drag=null;
+ [...$('#rays').children].forEach((r,i)=>{const c=S.cats.find(x=>x.id===r.dataset.c);if(c)c.order=i+1});
+ save();rays();fillSel();render()}
+document.addEventListener('pointerup',endDrag);document.addEventListener('pointercancel',endDrag);
+const cap=n=>n[0].toUpperCase()+n.slice(1);
+let cEdit=0;
+const cItem=n=>S.items.find(i=>i.cv&&!i.next&&norm(i.name)===norm(n));
+function cons(){
+ $('#cl').innerHTML=S.cons.map((n,k)=>{const it=cItem(n);
+  return `<div class="cv" data-k="${k}"><span class="cnm">${esc(n[0].toUpperCase()+n.slice(1))}</span>`+(cEdit?`<button class="cb" data-v="x" aria-label="Retirer">✕</button>`:`${it?`<button class="cb" data-v="-" aria-label="Moins">−</button><b class="cq">${esc(it.qty||'1')}</b>`:''}<button class="cb pl" data-v="+" aria-label="Plus">+</button>`)+`</div>`}).join('');
+ $('#bCe').textContent=cEdit?'Terminé':'Modifier la liste des conserves'}
+$('#bCv').onclick=()=>{cEdit=0;cons();open('#shV')};
+$('#bCe').onclick=()=>{if(cEdit){cEdit=0;$('#shV').classList.remove('on')}else cEdit=1;cons()};
+$('#cl').addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(!b)return;
+ const k=+b.closest('.cv').dataset.k,n=S.cons[k],it=cItem(n),v=b.dataset.v;
+ if(v==='x')S.cons.splice(k,1);
+ else if(!it){if(v==='+'){S.items.push({id:Date.now()+Math.random(),name:cap(n),qty:'1',cat:'Épicerie',done:false,next:false,cv:1});toast(cap(n)+' ajouté')}}
+ else{const num=/^\d+$/.test(it.qty||'1'),c=parseInt(it.qty||'1');
+  if(v==='+'){if(num)it.qty=String(c+1);else toast('Quantité déjà précisée : modifie-la avec ✎')}
+  else if(num&&c>1)it.qty=String(c-1);else S.items=S.items.filter(i=>i!==it)}
+ save();render();cons()});
+function addCons(){const v=$('#cn').value.trim();if(!v)return;
+ if(S.cons.some(x=>norm(x)===norm(v))){toast('Déjà dans les conserves');return}
+ S.cons.push(v);$('#cn').value='';save();cons()}
+$('#bCa').onclick=addCons;$('#cn').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addCons()}});
+function newRay(){const v=$('#nr').value.trim();if(!v)return;
+ if(S.cats.some(c=>norm(c.id)===norm(v))){toast('Ce rayon existe déjà');return}
+ S.cats.push({id:v,order:Math.max(0,...S.cats.map(c=>c.order))+1});$('#nr').value='';save();rays();fillSel();render();toast('Rayon créé en dernier. Glisse-le à sa place.')}
+$('#bNr').onclick=newRay;$('#nr').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();newRay()}});
+let ed=null;
+function editIt(it){ed=it;$('#eh').textContent=it.name;$('#eq').value=it.qty||'';$('#ec').innerHTML=sorted().map(c=>`<option>${esc(c.id)}</option>`).join('');$('#ec').value=it.cat;open('#shE');setTimeout(()=>$('#eq').focus(),60)}
+function saveEd(){if(ed){ed.qty=$('#eq').value.trim();ed.cat=$('#ec').value;S.learned[norm(ed.name)]=ed.cat;save();render()}ed=null;$('#shE').classList.remove('on')}
+$('#bEd').onclick=saveEd;$('#eq').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();saveEd()}});
+/* recette */
+let found=[];
+$('#bRec').onclick=()=>open('#shC');
+$('#rf').onchange=e=>{$('#fn').textContent=e.target.files[0]?e.target.files[0].name:'Choisir une capture ou une photo'};
+const st=t=>$('#st').textContent=t;
+function local(t){return t.split(/\n|;/).map(l=>l.replace(/^[\s\-•*]+/,'').trim()).filter(l=>l&&l.length<60).map(l=>{
+ const m=l.match(/^([\d.,\/½¼¾]+\s*(?:kg|g|ml|cl|l|c\.à\.s|c\.à\.c|cuillères? à (?:soupe|café)|tranches?|gousses?|sachets?|pincées?)?\s*(?:de |d’|d')?)(.+)/i);
+ const name=(m?m[2]:l).trim();return{name,qty:m?m[1].trim():'',cat:catOf(name)||'Autres'}})}
+$('#bAn').onclick=async()=>{
+ const t=$('#rt').value.trim(),f=$('#rf').files[0];
+ if(!t&&!f){st('Colle une recette ou ajoute une capture.');return}
+ st('Analyse en cours…');$('#res').innerHTML='';$('#bOk').style.display='none';
+ let list=null;
+ try{const key=localStorage.getItem('akey');
+  if(key){
+   const p=`Tu extrais les ingrédients à acheter d’une recette (texte ou image). Réponds uniquement par un tableau JSON, sans texte autour : [{"name":"nom du produit sans quantité","qty":"quantité ou chaîne vide","cat":"un parmi : ${S.cats.map(c=>c.id).join(' | ')}"}]. Ne liste pas l’eau du robinet. Fusionne les doublons.`;
+   const content=[];
+   if(f){const b64=await new Promise((ok,ko)=>{const r=new FileReader();r.onload=()=>ok(r.result.split(',')[1]);r.onerror=ko;r.readAsDataURL(f)});content.push({type:'image',source:{type:'base64',media_type:f.type||'image/jpeg',data:b64}})}
+   content.push({type:'text',text:p+(t?`\n\nRecette :\n${t}`:'')});
+   const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'content-type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-haiku-5-5',max_tokens:1500,messages:[{role:'user',content}]})});
+   const j=await r.json();
+   list=JSON.parse((j.content||[]).map(x=>x.text||'').join('').replace(/```json|```/g,'').trim());
+  }
+ }catch(e){}
+ if(!Array.isArray(list)){
+  if(!t){st('Pour lire une capture, ajoute ta clé API en bas de cette fenêtre. Sinon, colle le texte de la recette.');return}
+  list=local(t)}
+ found=list.filter(x=>x&&x.name).map(x=>({name:String(x.name),qty:String(x.qty||''),cat:S.learned[norm(String(x.name))]||(S.cats.some(c=>c.id===x.cat)?x.cat:(catOf(x.name)||'Autres'))}));
+ if(!found.length){st('Aucun ingrédient trouvé.');return}
+ st(found.length+' ingrédients trouvés. Décoche ceux que tu as déjà.');
+ $('#res').innerHTML=found.map((x,i)=>`<label class="ing"><input type="checkbox" checked data-i="${i}"><span>${esc(x.name)}<small>${esc(x.qty)}${x.qty?' · ':''}${esc(x.cat)}</small></span></label>`).join('');
+ $('#bOk').style.display='block'};
+$('#bOk').onclick=()=>{let n=0;
+ document.querySelectorAll('#res input:checked').forEach(c=>{const x=found[c.dataset.i];if(add(x.name,x.cat,x.qty,1))n++});
+ $('#shC').classList.remove('on');$('#res').innerHTML='';$('#rt').value='';$('#bOk').style.display='none';st('');toast(n+' ingrédient(s) ajouté(s)')};
+try{$('#ak').value=localStorage.getItem('akey')||''}catch(e){}
+$('#ak').addEventListener('change',e=>{try{localStorage.setItem('akey',e.target.value.trim())}catch(x){}});
+fillSel();render();
+</script>
+</body>
+</html>
